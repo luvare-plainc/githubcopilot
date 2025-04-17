@@ -45,6 +45,38 @@
       <p>&copy; 2023 Mergington High School</p>
     </footer>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("/activities")
+          .then((response) => response.json())
+          .then((activities) => { 
+            const activitiesList = document.getElementById("activities-list");
+            activitiesList.innerHTML = ""; // Clear loading message
+
+            for (const [name, details] of Object.entries(activities)) {
+              const card = document.createElement("div");
+              card.className = "activity-card";
+
+              card.innerHTML = `
+                <h4>${name}</h4>
+                <p><strong>Description:</strong> ${details.description}</p>
+                <p><strong>Schedule:</strong> ${details.schedule}</p>
+                <p><strong>Max Participants:</strong> ${details.max_participants}</p>
+                <p><strong>Participants:</strong></p>
+                <ul>
+                  ${details.participants.map((participant) => `<li>${participant}</li>`).join("")}
+                </ul>
+              `;
+
+              activitiesList.appendChild(card);
+            }
+          })
+          .catch((error) => {
+            console.error("Error loading activities:", error);
+            activitiesList.innerHTML = "<p>Failed to load activities.</p>";
+          });
+      });
+    </script>
     <script src="app.js"></script>
   </body>
 </html>
