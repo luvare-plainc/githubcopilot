@@ -82,18 +82,14 @@ section h3 {
 
 .activity-card ul {
   margin-top: 10px;
-  padding: 15px;
+  padding-left: 20px;
   list-style-type: disc;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  color: #444;
+  color: #555;
 }
 
 .activity-card ul li {
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .activity-card ul li::before {
